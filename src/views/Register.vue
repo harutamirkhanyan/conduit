@@ -32,7 +32,10 @@
                 placeholder="Password"
               />
             </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right" :disabled="isSubmitting">
+            <button
+              class="btn btn-lg btn-primary pull-xs-right"
+              :disabled="isSubmitting"
+            >
               Sign Up
             </button>
           </form>
@@ -53,8 +56,14 @@ export default {
   methods: {
     onSubmit() {
       console.log('Submittes form')
-      this.$store.commit('registerStart')
-    },
+      this.$store.dispatch('register', {
+        email: 'efmherkdfdfhudbferv@email.ru',
+        username: 'userefdfjbvuejhvkvervev5',
+        password: '123456'
+      }).then(user=>{
+      console.log('successfuly reg', user);
+      })
+    }
   }
 }
 </script>
