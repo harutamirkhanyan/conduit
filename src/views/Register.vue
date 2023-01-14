@@ -9,7 +9,10 @@
               Need an account?
             </router-link>
           </p>
-          VALIDATION ERRORS
+          <ha-validation-errors
+            v-if="validationErrors"
+            :validation-errors="validationErrors"
+          ></ha-validation-errors>
           <form @submit.prevent="onSubmit">
             <fieldset class="form-group">
               <input
@@ -49,8 +52,12 @@
 </template>
 
 <script>
+import HaValidationErrors from '@/components/ValidationErrors'
 export default {
-  name: 'McvRegister',
+  name: 'HaRegister',
+  components: {
+    HaValidationErrors
+  },
   data() {
     return {
       email: this.email,
@@ -61,6 +68,9 @@ export default {
   computed: {
     isSubmitting() {
       return this.$store.state.auth.isSubmitting
+    },
+    validationErrors() {
+      return this.$store.state.auth.validationErrors
     }
   },
   methods: {
@@ -73,7 +83,7 @@ export default {
           password: this.password
         })
         .then(user => {
-        this.$router.push({name: 'home'})
+          this.$router.push({name: 'home'})
           console.log('successfuly reg', user)
         })
     }
