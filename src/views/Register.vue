@@ -53,6 +53,8 @@
 
 <script>
 import HaValidationErrors from '@/components/ValidationErrors'
+import {actionTypes} from '@/store/modules/auth'
+
 export default {
   name: 'HaRegister',
   components: {
@@ -77,7 +79,7 @@ export default {
     onSubmit() {
       console.log('Submittes form')
       this.$store
-        .dispatch('register', {
+        .dispatch(actionTypes.register, {
           email: this.email,
           username: this.username,
           password: this.password
