@@ -70,8 +70,8 @@
 </template>
 
 <script>
-import {getterTypes, mapGetters} from '@/store/modules/auth'
-import {mapState} from 'vuex'
+import {getterTypes} from '@/store/modules/auth'
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'HaTopbar',
