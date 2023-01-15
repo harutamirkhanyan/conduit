@@ -1,9 +1,19 @@
 <template>
   <div>
-    <h1>Medium clone</h1>
+   <ha-topbar></ha-topbar>
 
     <router-view></router-view>
   </div>
 </template>
 
-<style></style>
+<script>
+import HaTopbar from '@/components/Topbar'
+export default {
+  name: 'HaApp',
+  components: {
+    HaTopbar
+  },
+
+}
+</script>
+
