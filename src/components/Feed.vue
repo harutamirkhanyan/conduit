@@ -17,7 +17,8 @@
           <div class="info">
             <router-link
               :to="{
-                name: 'userProfile', params: {slug: article.author.username}
+                name: 'userProfile',
+                params: {slug: article.author.username}
               }"
               class="author"
             >
@@ -37,8 +38,14 @@
           <span>Read more...</span>
           Tag List
         </router-link>
-        <div>Pagination</div>
+        <div></div>
       </div>
+      <ha-pagination
+        :total="total"
+        :limit="limit"
+        :current-page="currentPage"
+        :url="url"
+      ></ha-pagination>
     </div>
   </div>
 </template>
@@ -46,12 +53,24 @@
 <script>
 import {mapState} from 'vuex'
 import {actionTypes} from '@/store/modules/feed'
+import HaPagination from '@/components/Pagination'
 export default {
   name: 'HaFeed',
   props: {
     apiUrl: {
       type: String,
       required: true
+    }
+  },
+  components: {
+    HaPagination
+  },
+  data() {
+    return {
+      total: 500,
+      limit: 10,
+      currentPage: 5,
+      url: '/'
     }
   },
   computed: {
