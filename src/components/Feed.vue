@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="isLoading">Loading...</div>
-    <div v-if="error">Something bad happened</div>
+    <ha-loading v-if="isLoading" />
+    <ha-error-message v-if="error" />
     <div v-if="feed">
       <div
         class="article-preview"
@@ -56,6 +56,8 @@ import {actionTypes} from '@/store/modules/feed'
 import HaPagination from '@/components/Pagination'
 import {limit} from '@/helpers/variables'
 import {stringify, parseUrl} from 'query-string'
+import HaLoading from '@/components/Loading.vue'
+import HaErrorMessage from '@/components/ErrorMessage'
 
 export default {
   name: 'HaFeed',
@@ -66,7 +68,9 @@ export default {
     }
   },
   components: {
-    HaPagination
+    HaPagination,
+    HaLoading,
+    HaErrorMessage
   },
   data() {
     return {
@@ -81,34 +85,34 @@ export default {
       feed: state => state.feed.data,
       error: state => state.feed.error
     }),
-    currentPage(){
+    currentPage() {
       return Number(this.$route.query.page || '1')
     },
-    baseUrl(){
-    return this.$route.path
+    baseUrl() {
+      return this.$route.path
     },
-    offset(){
-      return this.currentPage*limit-limit
+    offset() {
+      return this.currentPage * limit - limit
     }
   },
   watch: {
-    currentPage(){
+    currentPage() {
       this.fetchFeed()
     }
   },
   mounted() {
     this.fetchFeed()
   },
-  methods:{
-    fetchFeed(){
-    const parsedUrl=parseUrl(this.apiUrl)
-    const stringifiedParams=stringify({
-    limit,
-    offset: this.offset,
-    ...parsedUrl.query
-    })
-    const apiUrlWithParams=`${parsedUrl.url}?${stringifiedParams}`
-    this.$store.dispatch(actionTypes.getFeed, {apiUrl: apiUrlWithParams})
+  methods: {
+    fetchFeed() {
+      const parsedUrl = parseUrl(this.apiUrl)
+      const stringifiedParams = stringify({
+        limit,
+        offset: this.offset,
+        ...parsedUrl.query
+      })
+      const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
+      this.$store.dispatch(actionTypes.getFeed, {apiUrl: apiUrlWithParams})
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="isLoading">Loading...</div>
-    <div v-if="error">Something bad happend</div>
+   <ha-loading v-if="isLoading"/>
+   <ha-error-message v-if="error"/>
     <div class="sidebar" v-if="popularTags">
       <p>Popular Tags</p>
       <div class="tag-list">
@@ -19,6 +19,9 @@
 <script>
 import {mapState} from 'vuex'
 import {actionTypes} from '@/store/modules/popularTags'
+import HaLoading from '@/components/Loading'
+import HaErrorMessage from '@/components/ErrorMessage'
+
 export default {
   name: 'HaPupularTags',
   computed: {
@@ -27,6 +30,10 @@ export default {
       error: state => state.popularTags.error,
       popularTags: state => state.popularTags.data
     })
+  },
+  components:{
+    HaLoading,
+    HaErrorMessage
   },
   mounted() {
     this.$store.dispatch(actionTypes.getPopularTags)

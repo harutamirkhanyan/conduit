@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    BANNER
+    <ha-banner/>
     <div class="container page">
       <div class="row">
         <div class="col-md-9">
@@ -15,10 +15,11 @@
 </template>
 
 <script>
-import HaFeed from '../components/Feed.vue'
-import HaPupularTags from '../components/PopularTags.vue'
+import HaFeed from '@/components/Feed.vue'
+import HaPupularTags from '@/components/PopularTags.vue'
+import HaBanner from '@/components/Banner.vue'
 export default {
-  components: {HaFeed, HaPupularTags},
+  components: {HaFeed, HaPupularTags, HaBanner},
   name: 'HaGlobalFeed',
   data() {
     return {
