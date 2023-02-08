@@ -7,7 +7,7 @@
           <ha-feed :api-url='apiUrl'></ha-feed>
         </div>
         <div class="col-md-3">
-          Popular Tags
+          <ha-pupular-tags></ha-pupular-tags>
         </div>
       </div>
     </div>
@@ -16,8 +16,9 @@
 
 <script>
 import HaFeed from '../components/Feed.vue'
+import HaPupularTags from '../components/PopularTags.vue'
 export default {
-  components: {HaFeed},
+  components: {HaFeed, HaPupularTags},
   name: 'HaGlobalFeed',
   data() {
     return {
