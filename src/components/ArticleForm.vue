@@ -3,7 +3,7 @@
     <div class="container page">
       <div class="row">
         <div class="coll-md-10 offset-md-1 col-xs-12">
-          <ha-validation-errors v-if="errors" />
+          <ha-validation-errors v-if="errors" :validationErrors="errors" />
           <form @submit.prevent="onSubmit">
             <fieldset>
               <fieldset class="form-group">
@@ -89,7 +89,7 @@ export default {
         title: this.title,
         description: this.description,
         body: this.body,
-        tagList: this.tagList
+        tagList: this.tagList.split(' ')
       }
       this.$emit('articleSubmit', form)
     }
