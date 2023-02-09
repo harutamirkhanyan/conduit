@@ -15,7 +15,6 @@ export default {
     HaTopbar
   },
   mounted() {
-  console.log('hellow from app');
   this.$store.dispatch(actionTypes.getCurrentUser)
   }
 }

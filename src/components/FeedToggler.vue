@@ -47,7 +47,6 @@ export default {
       isLoggedIn: getterTypes.isLoggedIn
     }),
     routeName() {
-      console.log(this.$route.name)
       return this.$route.name
     }
   }
