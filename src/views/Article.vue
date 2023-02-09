@@ -52,7 +52,7 @@
           <div>
             <p>{{ article.body }}</p>
           </div>
-          TAGLIST
+          <ha-tag-list :tagList='article.tagList'></ha-tag-list>
         </div>
       </div>
     </div>
@@ -65,6 +65,7 @@ import {getterTypes as authGetterTypes} from '@/store/modules/auth'
 import {mapState, mapGetters} from 'vuex'
 import HaLoading from '@/components/Loading.vue'
 import HaErrorMessage from '@/components/ErrorMessage.vue'
+import HaTagList from '@/components/TagList.vue'
 export default {
   name: 'HaArticle',
   computed: {
@@ -85,7 +86,8 @@ export default {
   },
   components: {
     HaLoading,
-    HaErrorMessage
+    HaErrorMessage,
+    HaTagList
   },
   mounted() {
     this.$store.dispatch(articleActionTypes.getArticle, {

@@ -36,7 +36,7 @@
           <h1>{{ article.title }}</h1>
           <p>{{ article.description }}</p>
           <span>Read more...</span>
-          Tag List
+          <ha-tag-list :tagList='article.tagList'></ha-tag-list>
         </router-link>
         <div></div>
       </div>
@@ -58,6 +58,7 @@ import {limit} from '@/helpers/variables'
 import {stringify, parseUrl} from 'query-string'
 import HaLoading from '@/components/Loading.vue'
 import HaErrorMessage from '@/components/ErrorMessage'
+import HaTagList from '@/components/TagList'
 
 export default {
   name: 'HaFeed',
@@ -70,7 +71,8 @@ export default {
   components: {
     HaPagination,
     HaLoading,
-    HaErrorMessage
+    HaErrorMessage,
+    HaTagList
   },
   data() {
     return {
