@@ -26,8 +26,13 @@
             </router-link>
             <span class="date">{{ article.createdAt }}</span>
           </div>
-          <div class="pull-xs-right"></div>
-          Add to Favorites
+          <div class="pull-xs-right">
+          <ha-add-to-favorites 
+          :isFavoreted='article.favorited'
+          :article-slug='article.slug'
+          :favorites-count='article.favoritesCount'
+          ></ha-add-to-favorites>
+          </div>
         </div>
         <router-link
           :to="{name: 'article', params: {slug: article.slug}}"
@@ -59,6 +64,7 @@ import {stringify, parseUrl} from 'query-string'
 import HaLoading from '@/components/Loading.vue'
 import HaErrorMessage from '@/components/ErrorMessage'
 import HaTagList from '@/components/TagList'
+import HaAddToFavorites from '@/components/AddToFavorites'
 
 export default {
   name: 'HaFeed',
@@ -72,11 +78,11 @@ export default {
     HaPagination,
     HaLoading,
     HaErrorMessage,
-    HaTagList
+    HaTagList,
+    HaAddToFavorites
   },
   data() {
     return {
-      // total: 500,
       limit,
       url: '/'
     }

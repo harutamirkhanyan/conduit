@@ -100,7 +100,6 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('Submitted Settings')
       this.$store.dispatch(authActionTypes.updateCurrentUser, {
         currentUserInput: this.form
       })

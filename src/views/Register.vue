@@ -73,25 +73,17 @@ export default {
       isSubmitting: state => state.auth.isSubmitting,
       validationErrors: state => state.auth.validationErrors
     })
-    // isSubmitting() {
-    //   return this.$store.state.auth.isSubmitting
-    // },
-    // validationErrors() {
-    //   return this.$store.state.auth.validationErrors
-    // }
   },
   methods: {
     onSubmit() {
-      console.log('Submittes form')
       this.$store
         .dispatch(actionTypes.register, {
           email: this.email,
           username: this.username,
           password: this.password
         })
-        .then(user => {
+        .then(() => {
           this.$router.push({name: 'globalFeed'})
-          console.log('successfuly reg', user)
         })
     }
   }
